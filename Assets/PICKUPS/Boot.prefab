@@ -114,5 +114,8 @@ MonoBehaviour:
   img: {fileID: 0}
   bar: {fileID: 5768897920118678462, guid: cf5cb590639262e4e912faf7c5af9abd, type: 3}
   player: {fileID: 0}
+  playerr: {fileID: 0}
   t: 10
   x: 0
+  tim: {fileID: 0}
+  go: 0
