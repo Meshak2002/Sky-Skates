@@ -56,6 +56,9 @@ public class ShopManager : MonoBehaviour
     private int pefequip;
     public int totcoins;
     public Total_coins_score tcs;
+    public Button Left, Right;
+    public RectTransform content;
+    public float currentPos;
     private void Start()
     {
         pefx1=PlayerPrefs.GetInt(boughtx1);
@@ -107,12 +110,36 @@ public class ShopManager : MonoBehaviour
         if(pefequip==6){
             onclick_z2e();
         }
+        //Skate_Scroll_POsition
+        currentPos = PlayerPrefs.GetFloat("currentPos");
+        content.anchoredPosition = new Vector2(currentPos, content.anchoredPosition.y);
+        Debug.Log(currentPos);
+
+        Left.onClick.AddListener(Lefft);
+        Right.onClick.AddListener(Rigght);
     }
 
     // Update is called once per frame
     private void Update(){
         txt.text=""+c.Totalcoins;
         totcoins=c.Totalcoins;
+    }
+    public void Lefft()
+    {
+        if (content.position.x < 0)
+        {
+            content.anchoredPosition = new Vector2(content.anchoredPosition.x + 200, content.anchoredPosition.y);
+            PlayerPrefs.SetFloat("currentPos", content.anchoredPosition.x);
+            currentPos = content.anchoredPosition.x;
+        }
+    }public void Rigght()
+    {
+        if (currentPos/(-200) < content.transform.childCount-1)
+        {
+            content.anchoredPosition = new Vector2(content.anchoredPosition.x - 200, content.anchoredPosition.y);
+            PlayerPrefs.SetFloat("currentPos", content.anchoredPosition.x);
+            currentPos = content.anchoredPosition.x;
+        }
     }
     public void onclic_x1()
     {

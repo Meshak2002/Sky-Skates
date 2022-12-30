@@ -40,6 +40,6 @@ public class PlayerMovement : MonoBehaviour
         CC.Move(moveV*Time.deltaTime);
     }
     public void Jumpbutton(){
-        Button=true;
+        Button = true;
     }
 }
