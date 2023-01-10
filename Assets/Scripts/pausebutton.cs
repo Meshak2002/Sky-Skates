@@ -22,5 +22,6 @@ public class pausebutton : MonoBehaviour
         pc.SetActive(true);
         c.enabled=false;
         s.enabled=false;
+        AudioListener.volume = 0;
     }
 }

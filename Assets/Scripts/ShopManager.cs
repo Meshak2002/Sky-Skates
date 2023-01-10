@@ -59,9 +59,13 @@ public class ShopManager : MonoBehaviour
     public Button Left, Right;
     public RectTransform content;
     public float currentPos;
+    public AudioSource swipe,bought;
+    public GameObject nomoney;
+    Animator an;
     private void Start()
     {
-        pefx1=PlayerPrefs.GetInt(boughtx1);
+        an = nomoney.GetComponent<Animator>();
+        pefx1 =PlayerPrefs.GetInt(boughtx1);
         pefx2=PlayerPrefs.GetInt(boughtx2);
         pefy1=PlayerPrefs.GetInt(boughty1);
         pefy2=PlayerPrefs.GetInt(boughty2);
@@ -123,11 +127,18 @@ public class ShopManager : MonoBehaviour
     private void Update(){
         txt.text=""+c.Totalcoins;
         totcoins=c.Totalcoins;
+        if (an.GetCurrentAnimatorStateInfo(0).IsName("Finished"))
+        {
+            nomoney.SetActive(false);
+        }
     }
     public void Lefft()
     {
+        //Debug.Log("LFT");
         if (content.position.x < 0)
         {
+            swipe.Play();
+            nomoney.SetActive(false);
             content.anchoredPosition = new Vector2(content.anchoredPosition.x + 200, content.anchoredPosition.y);
             PlayerPrefs.SetFloat("currentPos", content.anchoredPosition.x);
             currentPos = content.anchoredPosition.x;
@@ -136,6 +147,8 @@ public class ShopManager : MonoBehaviour
     {
         if (currentPos/(-200) < content.transform.childCount-1)
         {
+            swipe.Play();
+            nomoney.SetActive(false);
             content.anchoredPosition = new Vector2(content.anchoredPosition.x - 200, content.anchoredPosition.y);
             PlayerPrefs.SetFloat("currentPos", content.anchoredPosition.x);
             currentPos = content.anchoredPosition.x;
@@ -144,64 +157,96 @@ public class ShopManager : MonoBehaviour
     public void onclic_x1()
     {
         if(c.Totalcoins>=x1){
+            bought.Play();
             c.Totalcoins-=x1;
             tcs.SaveCoins();
             bx1.SetActive(false);
             bx1_.SetActive(true);
             PlayerPrefs.SetInt(boughtx1,1);
         }
+        else
+        {
+            nomoney.SetActive(true);
+        }
     }
      public void onclic_x2()
     {
         if(c.Totalcoins>=x2){
+            bought.Play();
             c.Totalcoins-=x2;
             tcs.SaveCoins();
             bx2.SetActive(false);
             bx2_.SetActive(true);
             PlayerPrefs.SetInt(boughtx2,1);
         }
+        else
+        {
+            nomoney.SetActive(true);
+        }
     }
      public void onclic_y1()
     {
         if(c.Totalcoins>=y1){
+            bought.Play();
             c.Totalcoins-=y1;
             tcs.SaveCoins();
             by1.SetActive(false);
             by1_.SetActive(true);
             PlayerPrefs.SetInt(boughty1,1);
         }
+        else
+        {
+            nomoney.SetActive(true);
+        }
     }
      public void onclic_y2()
     {
         if(c.Totalcoins>=y2){
+            bought.Play();
             c.Totalcoins-=y2;
             tcs.SaveCoins();
             by2.SetActive(false);
             by2_.SetActive(true);
             PlayerPrefs.SetInt(boughty2,1);
         }
+        else
+        {
+            nomoney.SetActive(true);
+        }
     }
      public void onclic_z1()
     {
         if(c.Totalcoins>=z1){
+            bought.Play();
             c.Totalcoins-=z1;
             tcs.SaveCoins();
             bz1.SetActive(false);
             bz1_.SetActive(true);
             PlayerPrefs.SetInt(boughtz1,1);
         }
+        else
+        {
+            nomoney.SetActive(true);
+        }
     }
      public void onclic_z2()
     {
         if(c.Totalcoins>=z2){
+            bought.Play();
             c.Totalcoins-=z2;
             tcs.SaveCoins();
             bz2.SetActive(false);
             bz2_.SetActive(true);
             PlayerPrefs.SetInt(boughtz2,1);
         }
+        else
+        {
+            nomoney.SetActive(true);
+        }
     }
     public void onclick_x1e(){
+        equipShow();
+        bx1_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(true);
         edx2.SetActive(false);
         edy1.SetActive(false);
@@ -217,6 +262,8 @@ public class ShopManager : MonoBehaviour
         PlayerPrefs.SetInt(equippef,1);
     }
     public void onclick_x2e(){
+        equipShow();
+        bx2_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
         edx2.SetActive(true);
         edy1.SetActive(false);
@@ -232,6 +279,8 @@ public class ShopManager : MonoBehaviour
          PlayerPrefs.SetInt(equippef,2);
     }
     public void onclick_y1e(){
+        equipShow();
+        by1_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
         edx2.SetActive(false);
         edy1.SetActive(true);
@@ -247,6 +296,8 @@ public class ShopManager : MonoBehaviour
          PlayerPrefs.SetInt(equippef,3);
     }
     public void onclick_y2e(){
+        equipShow();
+        by2_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
         edx2.SetActive(false);
         edy1.SetActive(false);
@@ -262,6 +313,8 @@ public class ShopManager : MonoBehaviour
          PlayerPrefs.SetInt(equippef,4);
     }
     public void onclick_z1e(){
+        equipShow();
+        bz1_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
         edx2.SetActive(false);
         edy1.SetActive(false);
@@ -277,6 +330,8 @@ public class ShopManager : MonoBehaviour
          PlayerPrefs.SetInt(equippef,5);
     }
     public void onclick_z2e(){
+        equipShow();
+        bz2_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
         edx2.SetActive(false);
         edy1.SetActive(false);
@@ -291,8 +346,18 @@ public class ShopManager : MonoBehaviour
         boz2.SetActive(true);
          PlayerPrefs.SetInt(equippef,6);
     }
+    public void equipShow()
+    {
+        bx1_.transform.GetChild(0).gameObject.SetActive(true);
+        bx2_.transform.GetChild(0).gameObject.SetActive(true);
+        by1_.transform.GetChild(0).gameObject.SetActive(true);
+        by2_.transform.GetChild(0).gameObject.SetActive(true);
+        bz1_.transform.GetChild(0).gameObject.SetActive(true);
+        bz2_.transform.GetChild(0).gameObject.SetActive(true);
+    }
     public void onback(){
         startcanvas.SetActive(true);
         self.SetActive(false);
+        nomoney.SetActive(false);
     }
 }

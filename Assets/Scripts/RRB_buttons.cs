@@ -11,23 +11,24 @@ public class RRB_buttons : MonoBehaviour
     public PlayerMovement pm;
      public disable_startcanvas ds;
      public GameObject scorecoin_canvas;
+    public AudioSource loopsound;
     private void Start(){
-        AudioListener.volume=0;
         scorecoin_canvas.SetActive(false);
     }
     public void Replayf(){
          ds.falsefunc();
          SceneManager.LoadScene("SampleScene");
-         AudioListener.volume=0;
     }
     public void Replay(){
-         AudioListener.volume=1;
+         
          ds.truefunc();
          ds.repla();
-         SceneManager.LoadScene("SampleScene");     
+         SceneManager.LoadScene("SampleScene");
+        
     }
     public void Resume(){
         AudioListener.volume=1;
+        loopsound.Play();
         pm.enabled=true;
         this.gameObject.SetActive(false);
         c.enabled=true;

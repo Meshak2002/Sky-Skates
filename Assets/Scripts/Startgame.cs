@@ -13,6 +13,7 @@ public class Startgame : MonoBehaviour
     public GameObject store;   
     public GameObject self;
     public GameObject pickupstimeer;
+    public AudioSource loopsound;
     private void Start()
     {
         neu.SetActive(false);
@@ -23,12 +24,14 @@ public class Startgame : MonoBehaviour
         ob2.SetActive(false);
         coin_score_canvas.SetActive(false);
         pickupstimeer.SetActive(false);
-        AudioListener.volume=0;
+        //loopsound.Stop();
+        AudioListener.volume=1;
     }
 
     // Update is called once per frame
     public void Startf(){
-        AudioListener.volume=1;
+        //AudioListener.volume=1;
+        loopsound.Play();
          this.gameObject.SetActive(false);
          ob1.GetComponent<PlayerMovement>().enabled=true;
          ob1.GetComponent<Score>().enabled=true;

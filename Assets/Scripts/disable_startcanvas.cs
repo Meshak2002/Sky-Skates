@@ -12,6 +12,7 @@ public class disable_startcanvas : MonoBehaviour
     public GameObject ob2;
     public GameObject ob3;
     public GameObject cscanvas;
+    public AudioSource loopsound;
     public const string yre="replychk";
     public int y=0;
 
@@ -27,10 +28,14 @@ public class disable_startcanvas : MonoBehaviour
            ob3.GetComponent<deflook>().enabled=true;
            ob2.SetActive(true);
            cscanvas.SetActive(true);
-       }
+            AudioListener.volume = 1;
+            loopsound.Play();
+        }
        if(x==0 || y==1){  //enable startcan if button click or aplication exits
            go.SetActive(true);
-       }     
+            AudioListener.volume = 1;
+            loopsound.Stop();
+        }     
          
     }
     public void truefunc(){
