@@ -24,11 +24,11 @@ public class stunt : MonoBehaviour
     }
     IEnumerator stunnt()
     {
-        player.gravity = 5;
+        player.gravity = .3f;
         player.forwardM = player.forwardM * 2;
         player.moveV.y = 3;
         yield return new WaitForSeconds(0.5f);
-        player.gravity = 15;
+        player.gravity = 13f;
         player.forwardM = player.forwardM/2;
     }
 }

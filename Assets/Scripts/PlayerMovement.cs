@@ -7,13 +7,14 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     public float gravity;
     private CharacterController CC;
-    public float Movespeed=-8f;  //movespeed=-8/5
-    public float mosped = -1.6f;
+    public float Movespeed;  //movespeed=-8/5
+    public float mosped ; //Used to increase speed after collection certain coins
     public float JumpSpeed;
     public Vector3 moveV =Vector3.zero;
     private Animator animator;
-    public float forwardM=1f;
+    public float forwardM;
     public bool Button;
+    private Vector3 glob;
     private void Start()
     {
         CC=GetComponent<CharacterController>();
@@ -23,21 +24,22 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()
     {
-        moveV.z=Input.GetAxis("Horizontal")*Movespeed;
+        moveV.x=Input.GetAxis("Horizontal")*Movespeed;
         //moveV.z=Input.acceleration.x*Movespeed;
-        moveV.x=forwardM;
+        moveV.z=forwardM;
         //if(Input.GetButtonDown("Jump") && CC.isGrounded){
         if(Button==true && CC.isGrounded){
             animator.SetTrigger("Jump");
-            moveV.y=JumpSpeed;
+            glob.y=JumpSpeed;
             Button=false;
         }
-        moveV.y-=gravity*Time.deltaTime;
+        glob.y-=gravity*Time.deltaTime;
         
         
     }
     private void LateUpdate(){
-        CC.Move(moveV*Time.deltaTime);
+        CC.Move(this.transform.rotation*moveV*Time.deltaTime);  //If transform.rotation is not added .Move will take the reference of global vector ,but if it is added .Move will take the vector reference w.r.t transform.rotation
+        CC.Move(glob*Time.deltaTime);  //for gravity to be applied w.r.t global vector
     }
     public void Jumpbutton(){
         Button = true;

@@ -5,26 +5,51 @@ using UnityEngine;
 public class Smooth_look_at : MonoBehaviour
 {
     public float speed =20f;
-    public float x=10.588f;
-    public float y=103.98f;
-    public float z=6.196f;
+    public float x;
+    public float y;
+    public float z;
+    public void Start()
+    {
+       
+        y = this.transform.eulerAngles.y;
+        x = this.transform.eulerAngles.x;
+        z = this.transform.eulerAngles.z;
+        
+    }
     private void OnTriggerEnter(Collider col){
-        if(col.gameObject.CompareTag("Angle_1")){
-            x=10.588f;
-            y=86.3f; //next 104.1(angle3)
-            z=6.196f;
+        if(col.gameObject.CompareTag("Barrier 0")){
+            y = 100.275f;
+        }else if(col.gameObject.CompareTag("Barrier 1")){
+            y = 104.05f;
         }
-        if(col.gameObject.CompareTag("Angle_2")){
-            x=10.588f;
-            y=104.1f; //next (angle4)
-            z=6.196f;
+        else if (col.gameObject.CompareTag("Barrier 2")){
+            y = 86.762f;
+        }
+        else if (col.gameObject.CompareTag("Barrier 3")){
+            y = 85.9f;
+        }
+        else if (col.gameObject.CompareTag("Barrier 4")){
+            y = 95f;
+        }
+        else if (col.gameObject.CompareTag("Barrier 5")){
+            y = 106f;
+        }
+        else if (col.gameObject.CompareTag("Barrier 6")){
+            y = 106.417f;
+        }
+        else if (col.gameObject.CompareTag("Barrier 7")){
+            y = 105.8f;
+        }
+        else
+        {
+            Debug.Log("fk");
         }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        //Quaternion target_angle=Quaternion.LookRotation(target.position-this.transform.position);
+       
         this.transform.rotation=Quaternion.RotateTowards(this.transform.rotation,Quaternion.Euler(x,y,z),speed*Time.deltaTime);
     }
 }

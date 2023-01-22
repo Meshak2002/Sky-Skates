@@ -24,6 +24,7 @@ public class Startgame : MonoBehaviour
         ob2.SetActive(false);
         coin_score_canvas.SetActive(false);
         pickupstimeer.SetActive(false);
+        ob1.GetComponent<Smooth_look_at>().enabled = false;
         //loopsound.Stop();
         AudioListener.volume=1;
     }
@@ -40,6 +41,7 @@ public class Startgame : MonoBehaviour
          ob2.SetActive(true);
          coin_score_canvas.SetActive(true);
         pickupstimeer.SetActive(true);
+        
     }
     public void storeclick(){
         store.SetActive(true);

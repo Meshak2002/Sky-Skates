@@ -38,7 +38,7 @@ public class Score : MonoBehaviour
         if(((int)score-twohund==0 && onetime==false) && (int)score!=0){
               Debug.Log("time"); 
               pm.forwardM+=0.35f;
-            pm.Movespeed = pm.forwardM * pm.mosped;
+            pm.Movespeed = pm.Movespeed+pm.mosped;
             points += 2;
               twohund += 200;
               twohund += forty;
