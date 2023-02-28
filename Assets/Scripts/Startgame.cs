@@ -14,8 +14,17 @@ public class Startgame : MonoBehaviour
     public GameObject self;
     public GameObject pickupstimeer;
     public AudioSource loopsound;
+    private void Update()
+    {
+        if(ob1==null || ob3 == null)
+        {
+            ob1 = resource.instance.Player;
+            ob3 = resource.instance.camer;
+        }
+    }
     private void Start()
     {
+      
         neu.SetActive(false);
         ob1.GetComponent<PlayerMovement>().enabled=false;
         ob1.GetComponent<coins>().enabled=false;

@@ -62,8 +62,13 @@ public class ShopManager : MonoBehaviour
     public AudioSource swipe,bought;
     public GameObject nomoney;
     Animator an;
+    public static ShopManager sm;
     private void Start()
     {
+        if (sm == null)
+        {
+            sm = this;
+        }
         an = nomoney.GetComponent<Animator>();
         pefx1 =PlayerPrefs.GetInt(boughtx1);
         pefx2=PlayerPrefs.GetInt(boughtx2);

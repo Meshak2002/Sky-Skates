@@ -10,18 +10,20 @@ public class disable_startcanvas : MonoBehaviour
     public GameObject go; //Start canvas
     public GameObject ob1;
     public GameObject ob2;
-    public GameObject ob3;
+    public GameObject ob3,pickupmang;
     public GameObject cscanvas;
     public AudioSource loopsound;
+    public bool isPaused = false;
     public const string yre="replychk";
     public int y=0;
 
     private void Start()
     {
-       y=PlayerPrefs.GetInt(yre);   //on application quit or not
+       y =PlayerPrefs.GetInt(yre);   //on application quit or not
        x=PlayerPrefs.GetInt(chk);  //button based reply or back
        if(x==1 && y==0){  //disable startcanvas
            go.SetActive(false);
+           pickupmang.SetActive(true);
            ob1.GetComponent<PlayerMovement>().enabled=true;
            ob1.GetComponent<Score>().enabled=true;
            ob1.GetComponent<coins>().enabled=true;
@@ -38,6 +40,15 @@ public class disable_startcanvas : MonoBehaviour
         }     
          
     }
+    private void Update()
+    {
+        if (isPaused == true)
+        {
+            Debug.Log("paused");
+            PlayerPrefs.SetInt(yre, 1);
+            isPaused = false;
+        }
+    }
     public void truefunc(){
         PlayerPrefs.SetInt(chk,1);
     }
@@ -46,6 +57,16 @@ public class disable_startcanvas : MonoBehaviour
     }
     public void OnApplicationQuit(){
         PlayerPrefs.SetInt(yre,1);
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        isPaused = !hasFocus;
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        isPaused = pauseStatus;
     }
     public void repla(){
         PlayerPrefs.SetInt(yre,0);

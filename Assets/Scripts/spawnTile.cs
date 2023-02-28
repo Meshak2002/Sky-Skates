@@ -16,11 +16,12 @@ public class spawnTile : MonoBehaviour
     public GameObject Gameover;
     public Transform player;
     private int ran_dom;
-    private List<GameObject> glist= new List<GameObject>();
+    public List<GameObject> glist= new List<GameObject>();
     public GameObject csp_ui; //coin,score,pause canvas
 
     private void Start()
     {
+        player = resource.instance.Player.transform;
         SpawnTile(0);
         SpawnTile(1);
 }

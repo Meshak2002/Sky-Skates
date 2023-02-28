@@ -13,11 +13,12 @@ public class RRB_buttons : MonoBehaviour
      public GameObject scorecoin_canvas;
     public AudioSource loopsound;
     private void Start(){
+        pm = resource.instance.Player.GetComponent<PlayerMovement>();
         scorecoin_canvas.SetActive(false);
     }
     public void Replayf(){
          ds.falsefunc();
-         SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SampleScene");
     }
     public void Replay(){
          

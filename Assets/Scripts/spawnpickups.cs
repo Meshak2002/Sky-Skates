@@ -6,22 +6,21 @@ public class spawnpickups : MonoBehaviour
 {
     // Start is called before the first frame update
     public List<GameObject> pickups;
-    public List<GameObject> spawn;
+    public List<Transform> spawn;
     public GameObject neu;
-    public int rx, ry;
+    public int rpickup, rposition;
     public time tim;
     //public bool y;
     void Start()
     {
-        tim = GameObject.Find("Pickup Manager").GetComponent<time>();
-        rx = Random.Range(0, pickups.Count);
-        ry = Random.Range(0, spawn.Count);
-
-        neu = Instantiate(pickups[rx], spawn[ry].transform.position, pickups[rx].transform.rotation);
+        tim = resource.instance.pickupmanager.GetComponent<time>();
+        rpickup = Random.Range(0, pickups.Count);
+        rposition = Random.Range(0, spawn.Count);
+        
+        neu = Instantiate(pickups[rpickup], spawn[rposition].position, pickups[rpickup].transform.rotation);
         neu.transform.SetParent(this.gameObject.transform);
         tim.activepickups.Add(neu);
-    }
+        Destroy(spawn[rposition].gameObject);
 
-    // Update is called once per frame
-  
+    }
 }

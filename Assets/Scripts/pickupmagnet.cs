@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class pickupmagnet : MonoBehaviour
 {
@@ -10,11 +11,15 @@ public class pickupmagnet : MonoBehaviour
     public GameObject img, bar,playerr;
     public float t=10,x;
     public bool go;
-
-    
+    public Sprite logo;
+    public Image holder;
+    public static pickupmagnet instance;
     void Start()
     {
-        playerr = GameObject.Find("Player");
+        if (instance == null)
+            instance = this;
+        holder = pausebutton.pb.hl;
+        playerr = resource.instance.Player;
         tim = GameObject.Find("Pickup Manager").GetComponent<time>();
         x = 1;
     }
@@ -41,7 +46,7 @@ public class pickupmagnet : MonoBehaviour
             img = bar.transform.GetChild(0).gameObject;
         }
         
-        magnet = GameObject.Find("Player").transform.GetChild(0).gameObject;
+        magnet = resource.instance.Player.transform.GetChild(0).gameObject;
         if (go == true && x>0)
         {
             img.GetComponent<RectTransform>().localScale = new Vector3(x, 1, 1);
@@ -68,10 +73,13 @@ public class pickupmagnet : MonoBehaviour
     IEnumerator wai()
     {
         bar.SetActive(true);
+        holder.sprite = logo;
         go = true;
         tim.upcomingpk = false;
+        tim.hideunhi();
         yield return new WaitForSeconds(t);
         tim.upcomingpk = true;
+        tim.hideunhi();
         go = false;
         magnet.SetActive(false);
         magnet.GetComponent<magnet>().cins.RemoveRange(0, magnet.GetComponent<magnet>().cins.Count);
@@ -80,5 +88,20 @@ public class pickupmagnet : MonoBehaviour
         img.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         tim.activepickups.Remove(this.gameObject);
         Destroy(this.gameObject);
+        tim.hideunhi();
+    }
+    public void endthis()
+    {
+        tim.upcomingpk = true;
+        tim.hideunhi();
+        go = false;
+        magnet.SetActive(false);
+        magnet.GetComponent<magnet>().cins.RemoveRange(0, magnet.GetComponent<magnet>().cins.Count);
+
+        bar.SetActive(false);
+        img.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        tim.activepickups.Remove(this.gameObject);
+        Destroy(this.gameObject);
+        tim.hideunhi();
     }
 }

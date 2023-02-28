@@ -13,9 +13,18 @@ public class BuildingHide : MonoBehaviour
     RaycastHit castHit;
     // Start is called before the first frame update
 
-    // Update is called once per frame
+    // Update is called once per frame 
+    public void Start()
+    {
+        
+    }
     private void Update()
     {
+        if (playerTransform == null)
+        {
+            playerTransform = resource.instance.Player.transform;
+        }
+
         castRay = new Ray(Camera.main.transform.position, playerTransform.position - Camera.main.transform.position);
 
         distCalculate = Vector3.Distance(playerTransform.position,Camera.main.transform.position);

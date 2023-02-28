@@ -26,20 +26,18 @@ public class Gameover : MonoBehaviour
             s.neu.SetActive(false);
             ds.falsefunc();
             SceneManager.LoadScene("SampleScene");
-            AudioListener.volume=0;
         }
     }
     public void Replayf(){
          s.neu.SetActive(false);
          ds.falsefunc();
          SceneManager.LoadScene("SampleScene");
-         AudioListener.volume=0;
     }
     public void Replay(){
          AudioListener.volume=1;
          s.neu.SetActive(false);
          ds.truefunc();
          ds.repla();
-         SceneManager.LoadScene("SampleScene");     
+         SceneManager.LoadScene("SampleScene");   
     }
 }

@@ -19,6 +19,8 @@ public class Score : MonoBehaviour
     public GameObject neu; //new (highscore) txt
     public PlayerMovement pm;
 
+    public int activate_score = 1000;
+
     // Update is called once per frame
     private void OnGUI(){
         sor.text=""+Mathf.Round(score);

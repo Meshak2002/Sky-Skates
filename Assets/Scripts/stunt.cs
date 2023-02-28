@@ -8,7 +8,7 @@ public class stunt : MonoBehaviour
     private PlayerMovement player;
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        player = resource.instance.Player.GetComponent<PlayerMovement>();
     }
     public void OnTriggerEnter(Collider other)
     {

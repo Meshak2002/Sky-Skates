@@ -18,27 +18,27 @@ public class Smooth_look_at : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col){
         if(col.gameObject.CompareTag("Barrier 0")){
-            y = 100.275f;
+            y = 100.21f;
         }else if(col.gameObject.CompareTag("Barrier 1")){
-            y = 104.05f;
+            y = 93.8f;
         }
         else if (col.gameObject.CompareTag("Barrier 2")){
-            y = 86.762f;
+            y = 86.743f;
         }
         else if (col.gameObject.CompareTag("Barrier 3")){
-            y = 85.9f;
+            y = 81.8f;
         }
         else if (col.gameObject.CompareTag("Barrier 4")){
-            y = 95f;
+            y = 85.52f;
         }
         else if (col.gameObject.CompareTag("Barrier 5")){
-            y = 106f;
+            y = 96.76f;
         }
         else if (col.gameObject.CompareTag("Barrier 6")){
-            y = 106.417f;
+            y = 99.456f;
         }
         else if (col.gameObject.CompareTag("Barrier 7")){
-            y = 105.8f;
+            y = 99.4f;
         }
         else
         {

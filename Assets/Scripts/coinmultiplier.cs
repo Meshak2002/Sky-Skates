@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class coinmultiplier : MonoBehaviour
 {
@@ -11,14 +12,19 @@ public class coinmultiplier : MonoBehaviour
     public float x,t=10;
     public bool go;
     public GameObject playerr;
-    
+    public Sprite logo;
+    public Image holder;
+    public static coinmultiplier instance;
 
     private void Start()
     {
-        playerr = GameObject.Find("Player");
+        if (instance == null)
+            instance = this;
+        holder = pausebutton.pb.hl;
+        playerr = resource.instance.Player;
         tim = GameObject.Find("Pickup Manager").GetComponent<time>();
         x = 1;
-        c = GameObject.Find("Player").GetComponent<coins>();
+        c = resource.instance.Player.GetComponent<coins>();
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -66,15 +72,31 @@ public class coinmultiplier : MonoBehaviour
     {
         
         bar.SetActive(true);
+        holder.sprite = logo;
         go = true;
         tim.upcomingpk = false;
+        tim.hideunhi();
         yield return new WaitForSeconds(t);
         tim.upcomingpk = true;
+        tim.hideunhi();
         go = false;
         bar.SetActive(false);
         barr.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         c.amount = 1;
         tim.activepickups.Remove(this.gameObject);
         Destroy(this.gameObject);
+        tim.hideunhi();
+    }
+    public void endthis()
+    {
+        tim.upcomingpk = true;
+        tim.hideunhi();
+        go = false;
+        bar.SetActive(false);
+        barr.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        c.amount = 1;
+        tim.activepickups.Remove(this.gameObject);
+        Destroy(this.gameObject);
+        tim.hideunhi();
     }
 }

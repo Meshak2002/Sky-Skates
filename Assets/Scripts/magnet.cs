@@ -17,7 +17,7 @@ public class magnet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        attractspeed = GameObject.Find("Player").GetComponent<PlayerMovement>().forwardM * 8f;
+        attractspeed = resource.instance.Player.GetComponent<PlayerMovement>().forwardM * 8f;
         if (cins.Count!=0)
         {
             

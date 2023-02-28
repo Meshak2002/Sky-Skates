@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class pausebutton : MonoBehaviour
 {
@@ -9,6 +10,15 @@ public class pausebutton : MonoBehaviour
     public Score s;
     public PlayerMovement pm;
     public GameObject pc; //pause canvas
+    public Image hl;
+    public static pausebutton pb;
+    private void Start()
+    {
+        if (pb == null)
+        {
+            pb = this;
+        }
+    }
     private void Update(){
             if (Input.GetKeyDown(KeyCode.Escape)) {
                  pm.enabled=false;
