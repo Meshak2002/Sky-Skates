@@ -7,7 +7,8 @@ public class boot : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject img, bar,player,playerr;
-    public float t=10,x=0;
+   [HideInInspector] public float t,x=0;
+    public float tt;
     public time tim;
     public bool go;
     public Sprite logo;
@@ -22,12 +23,13 @@ public class boot : MonoBehaviour
         playerr = resource.instance.Player;
         tim = GameObject.Find("Pickup Manager").GetComponent<time>();
         x = 1;
+        tt = t;
     }
     private void Update()
     {
         if (bar != null)
         {
-            bar.GetComponent<RectTransform>().localScale = new Vector3(3.709542f, 0.3380485f, 0.67292f);
+            //bar.GetComponent<RectTransform>().localScale = new Vector3(3.709542f, 0.3380485f, 0.67292f);
         }
         if (playerr.transform.CompareTag("PDead"))
         {
@@ -38,7 +40,26 @@ public class boot : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            this.transform.SetParent(GameObject.Find("Pickup Manager").transform);
+            if (resource.instance.pickupmanager.transform.childCount != 0)
+            {
+                foreach(Transform t in resource.instance.pickupmanager.transform)
+                {
+                    if (t.TryGetComponent<coinmultiplier>(out coinmultiplier cm))
+                    {
+                        cm.endthis();
+                    }else if (t.TryGetComponent<pickupmagnet>(out pickupmagnet pm))
+                    {
+                        pm.endthis();
+                    }else if (t.TryGetComponent<boot>(out boot b))
+                    {
+                        b.endthis();
+                    }else if (t.TryGetComponent<potion>(out potion p))
+                    {
+                        p.endthis();
+                    }
+                }
+            }
+            this.transform.SetParent(resource.instance.pickupmanager.transform);
             player = other.gameObject;
             this.GetComponent<MeshRenderer>().enabled=false;
             StartCoroutine(wai());
@@ -88,7 +109,6 @@ public class boot : MonoBehaviour
         tim.hideunhi();
         go = false;
         player.GetComponent<PlayerMovement>().JumpSpeed = 6;
-
         bar.SetActive(false);
         img.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         tim.activepickups.Remove(this.gameObject);

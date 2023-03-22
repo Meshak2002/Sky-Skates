@@ -29,19 +29,24 @@ public class portal : MonoBehaviour
                     {
                         if (time.instance.gameObject.transform.GetChild(0).transform.name.Contains("Magnet"))
                         {
-                            pickupmagnet.instance.endthis();
+                            time.instance.gameObject.transform.GetChild(0).transform.GetComponent<pickupmagnet>().endthis();
                             Debug.Log("Ended");
                         }else if (time.instance.gameObject.transform.GetChild(0).transform.name.Contains("Coin"))
                         {
-                            coinmultiplier.instance.endthis();
+                            time.instance.gameObject.transform.GetChild(0).transform.GetComponent < coinmultiplier>().endthis();
                             Debug.Log("Ended");
                         }
-                        else if (time.instance.gameObject.transform.GetChild(0).transform.name.Contains("Boot"))
+                        else if (time.instance.gameObject.transform.GetChild(0).transform.name.Contains("Bo"))
                         {
-                            boot.instance.endthis();
+                            time.instance.gameObject.transform.GetChild(0).transform.GetComponent < boot>().endthis();
+                            Debug.Log("Ended");
+                        }else if (time.instance.gameObject.transform.GetChild(0).transform.name.Contains("poti"))
+                        {
+                            time.instance.gameObject.transform.GetChild(0).transform.GetComponent < potion>().endpotion();
                             Debug.Log("Ended");
                         }
                     }
+                    
                     color_change.instance.portalcolide();
                     once = true;
                 }

@@ -17,6 +17,7 @@ public class coin_trigger : MonoBehaviour
     }
     public void OnTriggerEnter(Collider co){
         if(co.tag=="Player"){
+            this.transform.root.gameObject.GetComponent<spawnpickups>().spawn.Remove(this.transform);
             AudioSource.PlayClipAtPoint(sound,transform.position);
             co.GetComponent<coins>().coin+=co.GetComponent<coins>().amount;
             co.GetComponent<coins>().Totalcoins+=co.GetComponent<coins>().amount;

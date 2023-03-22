@@ -1,13 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class time : MonoBehaviour
 {
     // Start is called before the first frame update
     public List<GameObject> activepickups;
     public bool upcomingpk;
+    public UPG_values upv;
+    public List<GameObject> forTimeset;
     public static time instance;
+
+    private void OnEnable()
+    {
+        tocl();
+            forTimeset[0].GetComponent<coinmultiplier>().t = upv.time[0];
+            forTimeset[1].GetComponent<pickupmagnet>().t = upv.time[1];
+            forTimeset[2].transform.GetChild(0).GetComponent<boot>().t = upv.time[2];
+            forTimeset[3].transform.GetChild(0).GetComponent<potion>().t = upv.time[3];
+    }
+    public void tocl()
+    {
+        string path = Application.persistentDataPath + "UpgradeData.json";
+        string rdata = File.ReadAllText(path);
+        upv = JsonUtility.FromJson<UPG_values>(rdata);
+    }
     void Start()
     {
         if (instance == null)
@@ -38,6 +56,11 @@ public class time : MonoBehaviour
                                 Debug.Log("yae");
                                 activepickups[i].transform.Find("Boot").GetComponent<MeshRenderer>().enabled = upcomingpk;
                                 activepickups[i].transform.Find("Boot").GetComponent<CapsuleCollider>().enabled = upcomingpk;
+                            }else if (activepickups[i].transform.Find("small health poti.003") != null)
+                            {
+                                Debug.Log("yae");
+                                activepickups[i].transform.Find("small health poti.003").GetComponent<MeshRenderer>().enabled = upcomingpk;
+                                activepickups[i].transform.Find("small health poti.003").GetComponent<CapsuleCollider>().enabled = upcomingpk;
                             }
                         }
 

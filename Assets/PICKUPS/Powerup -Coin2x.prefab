@@ -115,7 +115,7 @@ MonoBehaviour:
   barr: {fileID: 0}
   tim: {fileID: 0}
   x: 0
-  t: 5
+  t: 10
   go: 0
   playerr: {fileID: 0}
   logo: {fileID: 21300000, guid: e5af89523550c214a937154be428dab1, type: 3}

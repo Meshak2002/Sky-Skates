@@ -10,7 +10,10 @@ public class Total_coins_score : MonoBehaviour
     public Score s;
      public const string Playr_Pref="Totcoins";
      public const string Pleyr_pref="Hiscore";
+    public static Total_coins_score instance;
      private void Awake(){
+        if (instance == null)
+            instance = this;
         c.Totalcoins=PlayerPrefs.GetInt(Playr_Pref);
      }
      private void Update(){

@@ -8,17 +8,33 @@ public class Death : MonoBehaviour
     public GameObject can; //end canvas
     public GameObject cscanvas; //score and coin canvas
     public Transform skateparent;
-    [SerializeField] GameObject active;
+     GameObject active;
     private GameObject act2;
+    public float initialFM, initialMS;
+    private void OnEnable()
+    {
+        /*if (this.transform.name == "Player 2")
+        {
+            initialFM = resource.instance.Player.GetComponent<Death>().initialFM;
+            initialMS = resource.instance.Player.GetComponent<Death>().initialMS;
+            Debug.Log("C :::" + initialFM + "  " + initialMS);
+        }*/
+    }
     public void Start()
     {
         if (this.transform.name != "Player 2")
         {
+            initialFM = this.GetComponent<PlayerMovement>().forwardM;
+            initialMS = this.GetComponent<PlayerMovement>().Movespeed;
+            Debug.Log("O :::" + initialFM + "  " + initialMS);
             setpare();
         }
         this.GetComponent<CharacterController>().enabled = true;
         if (this.transform.name == "Player 2")
         {
+            initialFM = resource.instance.splayer.GetComponent<Death>().initialFM;
+            initialMS = resource.instance.splayer.GetComponent<Death>().initialMS;
+            Debug.Log("C :::" + initialFM + "  " + initialMS);
             findactiveskate();
             act2=skateparent.Find(active.transform.name).gameObject;
             act2.gameObject.SetActive(true);
@@ -29,6 +45,8 @@ public class Death : MonoBehaviour
     {
         if (hit.transform.tag == "Obstacles")
         {
+            this.GetComponent<PlayerMovement>().forwardM = initialFM;
+            this.GetComponent<PlayerMovement>().Movespeed = initialMS;
             StartCoroutine(wai());
             this.GetComponent<Score>().enabled = false;
             can.SetActive(true);

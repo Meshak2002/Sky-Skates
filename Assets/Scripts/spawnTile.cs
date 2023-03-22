@@ -21,6 +21,7 @@ public class spawnTile : MonoBehaviour
 
     private void Start()
     {
+        hero = resource.instance.Player;
         player = resource.instance.Player.transform;
         SpawnTile(0);
         SpawnTile(1);

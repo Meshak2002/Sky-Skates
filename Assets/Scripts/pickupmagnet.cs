@@ -9,7 +9,8 @@ public class pickupmagnet : MonoBehaviour
     public GameObject magnet;
     public time tim;
     public GameObject img, bar,playerr;
-    public float t=10,x;
+    [HideInInspector] public float t,x;
+    public float tt;
     public bool go;
     public Sprite logo;
     public Image holder;
@@ -22,12 +23,13 @@ public class pickupmagnet : MonoBehaviour
         playerr = resource.instance.Player;
         tim = GameObject.Find("Pickup Manager").GetComponent<time>();
         x = 1;
+        tt = t;
     }
     private void Update()
     {
         if (bar != null)
         {
-            bar.GetComponent<RectTransform>().localScale = new Vector3(3.709542f, 0.3380485f, 0.67292f);
+            //bar.GetComponent<RectTransform>().localScale = new Vector3(3.709542f, 0.3380485f, 0.67292f);
         }
 
         if (playerr.transform.CompareTag("PDead"))
@@ -63,7 +65,29 @@ public class pickupmagnet : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            this.transform.SetParent(GameObject.Find("Pickup Manager").transform);
+            if (resource.instance.pickupmanager.transform.childCount != 0)
+            {
+                foreach (Transform t in resource.instance.pickupmanager.transform)
+                {
+                    if (t.TryGetComponent<coinmultiplier>(out coinmultiplier cm))
+                    {
+                        cm.endthis();
+                    }
+                    else if (t.TryGetComponent<pickupmagnet>(out pickupmagnet pm))
+                    {
+                        pm.endthis();
+                    }
+                    else if (t.TryGetComponent<boot>(out boot b))
+                    {
+                        b.endthis();
+                    }
+                    else if (t.TryGetComponent<potion>(out potion p))
+                    {
+                        p.endthis();
+                    }
+                }
+            }
+            this.transform.SetParent(resource.instance.pickupmanager.transform);
             magnet.SetActive(true);
             this.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(wai());

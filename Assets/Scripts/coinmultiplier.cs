@@ -9,7 +9,8 @@ public class coinmultiplier : MonoBehaviour
     private coins c;
     public GameObject bar,barr;
     public time tim;
-    public float x,t=10;
+    [HideInInspector] public float x,t;
+    public float tt;
     public bool go;
     public GameObject playerr;
     public Sprite logo;
@@ -25,12 +26,35 @@ public class coinmultiplier : MonoBehaviour
         tim = GameObject.Find("Pickup Manager").GetComponent<time>();
         x = 1;
         c = resource.instance.Player.GetComponent<coins>();
+        tt = t;
     }
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            this.transform.SetParent(GameObject.Find("Pickup Manager").transform);
+            if (resource.instance.pickupmanager.transform.childCount != 0)
+            {
+                foreach (Transform t in resource.instance.pickupmanager.transform)
+                {
+                    if (t.TryGetComponent<coinmultiplier>(out coinmultiplier cm))
+                    {
+                        cm.endthis();
+                    }
+                    else if (t.TryGetComponent<pickupmagnet>(out pickupmagnet pm))
+                    {
+                        pm.endthis();
+                    }
+                    else if (t.TryGetComponent<boot>(out boot b))
+                    {
+                        b.endthis();
+                    }
+                    else if (t.TryGetComponent<potion>(out potion p))
+                    {
+                        p.endthis();
+                    }
+                }
+            }
+            this.transform.SetParent(resource.instance.pickupmanager.transform);
             c.amount = 2;
             this.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(finishtime());           
@@ -40,7 +64,7 @@ public class coinmultiplier : MonoBehaviour
     {
         if (bar != null)
         {
-            bar.GetComponent<RectTransform>().localScale = new Vector3(3.709542f, 0.3380485f, 0.67292f);
+           // bar.GetComponent<RectTransform>().localScale = new Vector3(3.709542f, 0.3380485f, 0.67292f);
         }
         if (playerr.transform.CompareTag("PDead"))
         {

@@ -43,13 +43,14 @@ public class Startgame : MonoBehaviour
         //AudioListener.volume=1;
         loopsound.Play();
          this.gameObject.SetActive(false);
-         ob1.GetComponent<PlayerMovement>().enabled=true;
+        pickupstimeer.SetActive(true);
+        ob1.GetComponent<PlayerMovement>().enabled=true;
          ob1.GetComponent<Score>().enabled=true;
          ob1.GetComponent<coins>().enabled=true;
          ob3.GetComponent<deflook>().enabled=true;
          ob2.SetActive(true);
          coin_score_canvas.SetActive(true);
-        pickupstimeer.SetActive(true);
+       
         
     }
     public void storeclick(){
