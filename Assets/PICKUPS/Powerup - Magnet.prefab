@@ -117,8 +117,10 @@ MonoBehaviour:
   img: {fileID: 0}
   bar: {fileID: 0}
   playerr: {fileID: 0}
-  t: 10
+  t: 20
   x: 0
+  tt: 0
   go: 0
   logo: {fileID: 21300000, guid: 8c1d844a1be994f4282973927a3f0a3c, type: 3}
   holder: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 9d5d2e493e848ea43b574b866b60a447, type: 3}

@@ -161,5 +161,4 @@ MonoBehaviour:
   transparentb: 0
   visible: 0
   obst: []
-  duration: 1
-  start: 0
+  pickupSound: {fileID: 8300000, guid: 9d5d2e493e848ea43b574b866b60a447, type: 3}

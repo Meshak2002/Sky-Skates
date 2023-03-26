@@ -14,12 +14,14 @@ public class Gameover : MonoBehaviour
     public Text txt;
     public Text totscoretxt;
     public disable_startcanvas ds;
-    
+    public AudioSource loopsound;
+
     public void Start(){
         txt.text=c.Totalcoins.ToString();
         totscoretxt.text=s.hiscore.ToString();
         tc.SaveCoins();
-        AudioListener.volume=0;
+        loopsound.Stop();
+        //AudioListener.volume=0;
     }
     private void Update(){
         if(Input.GetKeyDown(KeyCode.Escape)){

@@ -59,7 +59,7 @@ public class ShopManager : MonoBehaviour
     public Button Left, Right;
     public RectTransform content;
     public float currentPos;
-    public AudioSource swipe,bought;
+    public AudioSource swipe,bought,eq,nmsound;
     public GameObject nomoney;
     Animator an;
     public static ShopManager sm;
@@ -172,6 +172,7 @@ public class ShopManager : MonoBehaviour
         else
         {
             nomoney.SetActive(true);
+            nmsound.Play();
         }
     }
      public void onclic_x2()
@@ -187,6 +188,8 @@ public class ShopManager : MonoBehaviour
         else
         {
             nomoney.SetActive(true);
+            nmsound.Play();
+
         }
     }
      public void onclic_y1()
@@ -202,6 +205,7 @@ public class ShopManager : MonoBehaviour
         else
         {
             nomoney.SetActive(true);
+            nmsound.Play();
         }
     }
      public void onclic_y2()
@@ -217,6 +221,7 @@ public class ShopManager : MonoBehaviour
         else
         {
             nomoney.SetActive(true);
+            nmsound.Play();
         }
     }
      public void onclic_z1()
@@ -232,6 +237,7 @@ public class ShopManager : MonoBehaviour
         else
         {
             nomoney.SetActive(true);
+            nmsound.Play();
         }
     }
      public void onclic_z2()
@@ -247,9 +253,15 @@ public class ShopManager : MonoBehaviour
         else
         {
             nomoney.SetActive(true);
+            nmsound.Play();
         }
     }
     public void onclick_x1e(){
+        
+        if (bx1_.transform.GetChild(0).gameObject.activeSelf == true && self.activeSelf==true)
+        {
+            eq.Play();
+        }
         equipShow();
         bx1_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(true);
@@ -267,6 +279,11 @@ public class ShopManager : MonoBehaviour
         PlayerPrefs.SetInt(equippef,1);
     }
     public void onclick_x2e(){
+        
+        if (bx2_.transform.GetChild(0).gameObject.activeSelf == true && self.activeSelf == true)
+        {
+            eq.Play();
+        }
         equipShow();
         bx2_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
@@ -284,6 +301,11 @@ public class ShopManager : MonoBehaviour
          PlayerPrefs.SetInt(equippef,2);
     }
     public void onclick_y1e(){
+        
+        if (by1_.transform.GetChild(0).gameObject.activeSelf == true && self.activeSelf == true)
+        {
+            eq.Play();
+        }
         equipShow();
         by1_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
@@ -301,6 +323,11 @@ public class ShopManager : MonoBehaviour
          PlayerPrefs.SetInt(equippef,3);
     }
     public void onclick_y2e(){
+        
+        if (by2_.transform.GetChild(0).gameObject.activeSelf == true && self.activeSelf == true)
+        {
+            eq.Play();
+        }
         equipShow();
         by2_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
@@ -318,6 +345,10 @@ public class ShopManager : MonoBehaviour
          PlayerPrefs.SetInt(equippef,4);
     }
     public void onclick_z1e(){
+        if (bz1_.transform.GetChild(0).gameObject.activeSelf == true && self.activeSelf == true)
+        {
+            eq.Play();
+        }
         equipShow();
         bz1_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);
@@ -335,6 +366,11 @@ public class ShopManager : MonoBehaviour
          PlayerPrefs.SetInt(equippef,5);
     }
     public void onclick_z2e(){
+       
+        if (bz2_.transform.GetChild(0).gameObject.activeSelf == true && self.activeSelf == true)
+        {
+            eq.Play();
+        }
         equipShow();
         bz2_.transform.GetChild(0).gameObject.SetActive(false);
         edx1.SetActive(false);

@@ -542,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalManager: {fileID: 7327461428157451111}
+  portlSound: {fileID: 8300000, guid: 53db89fcabd7f1e43a440dff01635de9, type: 3}
 --- !u!1 &4092406382259366836
 GameObject:
   m_ObjectHideFlags: 0

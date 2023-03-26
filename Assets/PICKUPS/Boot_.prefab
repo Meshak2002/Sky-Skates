@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boot
       objectReference: {fileID: 0}
+    - target: {fileID: 4677938287453619143, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d5d2e493e848ea43b574b866b60a447, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
 --- !u!4 &5773720658768274510 stripped

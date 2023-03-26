@@ -22,7 +22,7 @@ public class potion : MonoBehaviour
    private Material[] materials;
     public List<GameObject> obst;
     private  float duration=1, start;
-
+    public AudioClip pickupSound;
     public void visiblee()
     {
         start = Time.time;
@@ -188,7 +188,9 @@ public class potion : MonoBehaviour
                     }
                 }
             }
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             this.transform.SetParent(resource.instance.pickupmanager.transform);
+            
             player = other.gameObject;
             this.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(wai());

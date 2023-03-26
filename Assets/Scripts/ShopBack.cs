@@ -22,6 +22,7 @@ public class ShopBack : MonoBehaviour
     public int coins;
     string path;
     public GameObject[] pickups;
+    public AudioSource upsound;
 
     public void OnEnable()
     {
@@ -120,6 +121,7 @@ public class ShopBack : MonoBehaviour
         {
             if (barsize[i].localScale.x < .718f)
             {
+                upsound.Play();
                 resource.instance.Player.GetComponent<coins>().Totalcoins -= amount;
                 Vector3 sc = barsize[i].localScale;
                 sc.x += 0.1795f;

@@ -15,6 +15,7 @@ public class pickupmagnet : MonoBehaviour
     public Sprite logo;
     public Image holder;
     public static pickupmagnet instance;
+    public AudioClip pickupSound;
     void Start()
     {
         if (instance == null)
@@ -87,7 +88,9 @@ public class pickupmagnet : MonoBehaviour
                     }
                 }
             }
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             this.transform.SetParent(resource.instance.pickupmanager.transform);
+            
             magnet.SetActive(true);
             this.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(wai());

@@ -12,6 +12,7 @@ public class pausebutton : MonoBehaviour
     public GameObject pc; //pause canvas
     public Image hl;
     public static pausebutton pb;
+    public AudioSource loopsound;
     private void Start()
     {
         if (pb == null)
@@ -32,6 +33,8 @@ public class pausebutton : MonoBehaviour
         pc.SetActive(true);
         c.enabled=false;
         s.enabled=false;
-        AudioListener.volume = 0;
+        loopsound.Stop();
+        //AudioListener.volume = 0;
+
     }
 }

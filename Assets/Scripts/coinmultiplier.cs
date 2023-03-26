@@ -16,6 +16,7 @@ public class coinmultiplier : MonoBehaviour
     public Sprite logo;
     public Image holder;
     public static coinmultiplier instance;
+    public AudioClip pickupSound;
 
     private void Start()
     {
@@ -54,7 +55,9 @@ public class coinmultiplier : MonoBehaviour
                     }
                 }
             }
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             this.transform.SetParent(resource.instance.pickupmanager.transform);
+            
             c.amount = 2;
             this.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(finishtime());           

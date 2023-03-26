@@ -7,6 +7,7 @@ public class portal : MonoBehaviour
     // Start is called before the first frame update
     public GameObject portalManager;
     private bool once;
+    public AudioClip portlSound;
     void Start()
     {
     }
@@ -46,7 +47,7 @@ public class portal : MonoBehaviour
                             Debug.Log("Ended");
                         }
                     }
-                    
+                    AudioSource.PlayClipAtPoint(portlSound, transform.position);
                     color_change.instance.portalcolide();
                     once = true;
                 }

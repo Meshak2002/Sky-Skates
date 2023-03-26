@@ -11,6 +11,7 @@ public class Death : MonoBehaviour
      GameObject active;
     private GameObject act2;
     public float initialFM, initialMS;
+    public AudioSource damagsound,loopsound;
     private void OnEnable()
     {
         /*if (this.transform.name == "Player 2")
@@ -47,9 +48,11 @@ public class Death : MonoBehaviour
         {
             this.GetComponent<PlayerMovement>().forwardM = initialFM;
             this.GetComponent<PlayerMovement>().Movespeed = initialMS;
+            loopsound.Stop();
+            damagsound.Play();
             StartCoroutine(wai());
             this.GetComponent<Score>().enabled = false;
-            can.SetActive(true);
+            
             cscanvas.SetActive(false);
             this.gameObject.transform.tag = "PDead";
 
@@ -63,6 +66,9 @@ public class Death : MonoBehaviour
         findactiveskate();
         setfree();
         this.GetComponent<Animator>().enabled = false;
+        yield return new WaitUntil(()=>!damagsound.isPlaying);
+        Debug.Log("Finished");
+        can.SetActive(true);
     }
     public void setpare()
     {

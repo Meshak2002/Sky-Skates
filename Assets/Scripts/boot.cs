@@ -14,7 +14,7 @@ public class boot : MonoBehaviour
     public Sprite logo;
     public Image holder;
     public static boot instance;
-
+    public AudioClip pickupSound;
     void Start()
     {
         if (instance == null)
@@ -59,7 +59,9 @@ public class boot : MonoBehaviour
                     }
                 }
             }
+            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             this.transform.SetParent(resource.instance.pickupmanager.transform);
+           
             player = other.gameObject;
             this.GetComponent<MeshRenderer>().enabled=false;
             StartCoroutine(wai());

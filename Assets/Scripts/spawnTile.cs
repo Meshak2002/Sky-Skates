@@ -18,6 +18,7 @@ public class spawnTile : MonoBehaviour
     private int ran_dom;
     public List<GameObject> glist= new List<GameObject>();
     public GameObject csp_ui; //coin,score,pause canvas
+    public AudioSource loopsound;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class spawnTile : MonoBehaviour
         }
         if(hero.transform.position.y<currenty){ //FlyDie
             hero.transform.tag = "PDead";
+            loopsound.Stop();
             hero.GetComponent<Animator>().enabled=false;
             hero.GetComponent<PlayerMovement>().enabled=false;
             hero.GetComponent<Score>().enabled=false;
