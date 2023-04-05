@@ -13,7 +13,7 @@ public class coin_trigger : MonoBehaviour
     }
     public void Update()
     {
-        magnet = GameObject.Find("Magnettt");
+        magnet = resource.instance.Player.transform.Find("Magnettt").gameObject;
     }
     public void OnTriggerEnter(Collider co){
         if(co.tag=="Player"){

@@ -22,7 +22,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - POST_Processing
   - Water
   - UI
   - Foot_light

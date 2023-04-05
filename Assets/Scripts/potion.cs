@@ -91,7 +91,7 @@ public class potion : MonoBehaviour
             instance = this;
         holder = pausebutton.pb.hl;
         playerr = resource.instance.Player;
-        tim = GameObject.Find("Pickup Manager").GetComponent<time>();
+        tim = resource.instance.pickupmanager.GetComponent<time>();
         x = 1;
         tt = t;
     }
@@ -198,9 +198,9 @@ public class potion : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if (GameObject.Find("Score & coin canvas +pasue") != null)
+        if (resource.instance.sccanvas != null)
         {
-            bar = GameObject.Find("Score & coin canvas +pasue").transform.GetChild(0).gameObject;
+            bar = resource.instance.sccanvas.transform.GetChild(0).gameObject;
             img = bar.transform.GetChild(0).gameObject;
         }
         if (go == true && x > 0)

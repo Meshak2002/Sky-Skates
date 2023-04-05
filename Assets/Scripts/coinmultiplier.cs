@@ -24,7 +24,7 @@ public class coinmultiplier : MonoBehaviour
             instance = this;
         holder = pausebutton.pb.hl;
         playerr = resource.instance.Player;
-        tim = GameObject.Find("Pickup Manager").GetComponent<time>();
+        tim = resource.instance.pickupmanager.GetComponent<time>();
         x = 1;
         c = resource.instance.Player.GetComponent<coins>();
         tt = t;
@@ -77,9 +77,9 @@ public class coinmultiplier : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if (GameObject.Find("Score & coin canvas +pasue") != null)
+        if (resource.instance.sccanvas != null)
         {
-            bar = GameObject.Find("Score & coin canvas +pasue").transform.GetChild(0).gameObject;
+            bar = resource.instance.sccanvas.transform.GetChild(0).gameObject;
             barr = bar.transform.GetChild(0).gameObject;
         }
 

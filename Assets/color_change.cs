@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class color_change : MonoBehaviour
 {
@@ -12,7 +14,8 @@ public class color_change : MonoBehaviour
     public Text[] txt;
     public Image img;
     private Color c;
-    public Obst_MAterial obm;
+    public Volume vol;
+    public Color p1, _p1, p2, _p2;
 
     public static color_change instance;
     void Start()
@@ -69,6 +72,17 @@ public class color_change : MonoBehaviour
     }
     public void portalcolide()
     {
+        SplitToning t;
+        if(vol.profile.TryGet<SplitToning>(out t))
+        {
+            Debug.Log("CHHH");
+            t.shadows.value=p2;
+            t.highlights.value = _p2;
+            p2 = p1;
+            _p2 = _p1;
+            p1 = t.shadows.value;
+            _p1 = t.highlights.value;
+        }
         
         GameObject tmp1, tmp2, tmp3;
         resource.instance.splayer.GetComponent<PlayerMovement>().forwardM = resource.instance.Player.GetComponent<PlayerMovement>().forwardM;

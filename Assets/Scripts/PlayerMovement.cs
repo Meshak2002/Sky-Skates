@@ -21,17 +21,20 @@ public class PlayerMovement : MonoBehaviour
         animator=GetComponent<Animator>();
     }
     // Update is called once per frame
-    
     private void Update()
     {
         if (sidelock == false)
         {
-            moveV.x = Input.GetAxis("Horizontal") * Movespeed;
+            if (SystemInfo.supportsGyroscope && Input.gyro.enabled)
+            {
+                moveV.x = Input.gyro.userAcceleration.x * Movespeed;
+            }
+            else
+            {
+                moveV.x = Input.GetAxis("Horizontal") * Movespeed;
+            }
         }
-        //moveV.z=Input.acceleration.x*Movespeed;
-        
         moveV.z=forwardM;
-        //if(Input.GetButtonDown("Jump") && CC.isGrounded){
         if(Button==true && CC.isGrounded){
             animator.SetTrigger("Jump");
             glob.y=JumpSpeed;

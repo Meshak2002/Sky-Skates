@@ -29,6 +29,16 @@ public class ShopBack : MonoBehaviour
         path = Application.persistentDataPath + "UpgradeData.json";
         Debug.Log(path);
     }
+    public void UPbuttonClick()
+    {
+        Ubutton.interactable = false;
+        falsescroll();
+        Upanel.GetComponent<RectTransform>().anchoredPosition = i.GetComponent<RectTransform>().anchoredPosition;
+        Upanel.GetComponent<RectTransform>().localScale = i.GetComponent<RectTransform>().localScale;
+        Upanel.SetActive(true);
+        Up.SetBool("Open", true);
+        StartCoroutine("opwai");
+    }
     public void Start()
     {
         coins = resource.instance.Player.GetComponent<coins>().Totalcoins;
@@ -37,16 +47,6 @@ public class ShopBack : MonoBehaviour
         cstoBarUPdate();  //load class data to UI
         Upanel.SetActive(false);
         exit.onClick.AddListener(()=>exituppanel());
-        Ubutton.onClick.AddListener(delegate
-        {
-            Ubutton.interactable = false;
-            falsescroll();
-            Upanel.GetComponent<RectTransform>().anchoredPosition = i.GetComponent<RectTransform>().anchoredPosition;
-            Upanel.GetComponent<RectTransform>().localScale = i.GetComponent<RectTransform>().localScale;
-            Upanel.SetActive(true);
-            Up.SetBool("Open", true);
-            StartCoroutine("opwai");
-        });
     }
     // Update is called once per frame
     private void Update()
