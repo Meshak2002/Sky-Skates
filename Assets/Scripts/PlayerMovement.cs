@@ -25,14 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (sidelock == false)
         {
-            if (SystemInfo.supportsGyroscope && Input.gyro.enabled)
-            {
-                moveV.x = Input.gyro.userAcceleration.x * Movespeed;
-            }
-            else
-            {
-                moveV.x = Input.GetAxis("Horizontal") * Movespeed;
-            }
+            moveV.x = Input.GetAxis("Horizontal") * Movespeed;
+           // moveV.x = Input.acceleration.x * Movespeed;
         }
         moveV.z=forwardM;
         if(Button==true && CC.isGrounded){
