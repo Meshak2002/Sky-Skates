@@ -9,7 +9,7 @@ public class coin_trigger : MonoBehaviour
     public GameObject magnet;
     public void Awake()
     {
-        this.transform.root.gameObject.GetComponent<spawnpickups>().spawn.Add(this.transform);
+        this.transform.root.gameObject.GetComponent<spawnpickups>().spawn.Add(this.transform.parent);
     }
     public void Update()
     {
@@ -17,7 +17,7 @@ public class coin_trigger : MonoBehaviour
     }
     public void OnTriggerEnter(Collider co){
         if(co.tag=="Player"){
-            this.transform.root.gameObject.GetComponent<spawnpickups>().spawn.Remove(this.transform);
+            this.transform.root.gameObject.GetComponent<spawnpickups>().spawn.Remove(this.transform.parent);
             AudioSource.PlayClipAtPoint(sound,transform.position);
             co.GetComponent<coins>().coin+=co.GetComponent<coins>().amount;
             co.GetComponent<coins>().Totalcoins+=co.GetComponent<coins>().amount;

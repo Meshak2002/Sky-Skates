@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4293131091648686934
 Transform:
@@ -45,11 +45,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4493835311633223933, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.561
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4493835311633223933, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.294
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4493835311633223933, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
       propertyPath: m_LocalPosition.z
@@ -86,6 +86,14 @@ PrefabInstance:
     - target: {fileID: 4677938287453619142, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
       propertyPath: m_Name
       value: Boot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677938287453619142, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677938287453619143, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
+      propertyPath: t
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 4677938287453619143, guid: 524e9a3f6e5cced47a86f964b4f06016, type: 3}
       propertyPath: pickupSound

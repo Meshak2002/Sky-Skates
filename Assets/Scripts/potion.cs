@@ -222,6 +222,7 @@ public class potion : MonoBehaviour
         go = true;
         tim.upcomingpk = false;
         tim.hideunhi();
+        Debug.Log("Time:"+ t);
         yield return new WaitForSeconds(t);
         tim.upcomingpk = true;
         tim.hideunhi();

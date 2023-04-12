@@ -26,7 +26,9 @@ public class pausebutton : MonoBehaviour
                  pc.SetActive(true);
                  c.enabled=false;
                  s.enabled=false;
-            }
+                loopsound.Stop();
+            repeatpause();
+        }
     }
     public void onclick(){
         pm.enabled=false;
@@ -34,7 +36,16 @@ public class pausebutton : MonoBehaviour
         c.enabled=false;
         s.enabled=false;
         loopsound.Stop();
+        repeatpause();
         //AudioListener.volume = 0;
 
+    }
+    public void repeatpause()
+    {
+        pm.enabled = false;
+        pc.SetActive(true);
+        c.enabled = false;
+        s.enabled = false;
+        loopsound.Stop();
     }
 }

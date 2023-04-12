@@ -44,7 +44,7 @@ public class stunt : MonoBehaviour
         }
         if (high == true)
         {
-            jmplayr.y = -.2F;
+            jmplayr.y = -.4F * (player.forwardM);
             player.CC.Move(jmplayr*Time.deltaTime);
             if (player.CC.isGrounded)
             {

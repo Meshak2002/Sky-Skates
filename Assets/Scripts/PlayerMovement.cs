@@ -25,14 +25,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (sidelock == false)
         {
-            moveV.x = Input.GetAxis("Horizontal") * Movespeed;
-           // moveV.x = Input.acceleration.x * Movespeed;
+            //moveV.x = Input.GetAxis("Horizontal") * Movespeed;
+           moveV.x = Input.acceleration.x * Movespeed;
         }
         moveV.z=forwardM;
         if(Button==true && CC.isGrounded){
-            animator.SetTrigger("Jump");
-            glob.y=JumpSpeed;
-            Button=false;
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Jumping"))
+            {
+                Button = false;
+                animator.SetTrigger("Jump");
+                glob.y = JumpSpeed;
+            }
+            else
+            {
+                Button = false;
+            }
         }
         if (gravitylock == false)
         {
@@ -51,7 +58,11 @@ public class PlayerMovement : MonoBehaviour
     public void Jumpbutton(){
         if (jmplock == false)
         {
-            Button = true;
+            if(animator!=null)
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Jumping"))
+                {
+                Button = true;
+                }
         }
     }
 }

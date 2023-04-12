@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5111197281491923577
 Transform:
@@ -117,7 +117,7 @@ MonoBehaviour:
   img: {fileID: 0}
   bar: {fileID: 0}
   playerr: {fileID: 0}
-  t: 20
+  t: 12.5
   x: 0
   tt: 0
   go: 0

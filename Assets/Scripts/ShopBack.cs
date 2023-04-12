@@ -43,10 +43,9 @@ public class ShopBack : MonoBehaviour
     {
         coins = resource.instance.Player.GetComponent<coins>().Totalcoins;
         tocl();  //load class
-        UpgradeButtons();
         cstoBarUPdate();  //load class data to UI
         Upanel.SetActive(false);
-        exit.onClick.AddListener(()=>exituppanel());
+        //exit.onClick.AddListener(()=>exituppanel());
     }
     // Update is called once per frame
     private void Update()
@@ -70,7 +69,7 @@ public class ShopBack : MonoBehaviour
             t.gameObject.SetActive(true);
         }
     }
-    void exituppanel()
+    public void exituppanel()
     {
         Ubutton.interactable = true;
         Upanel.GetComponent<RectTransform>().anchoredPosition = o.GetComponent<RectTransform>().anchoredPosition;
@@ -104,15 +103,25 @@ public class ShopBack : MonoBehaviour
         string rdata= File.ReadAllText(path);
         upv = JsonUtility.FromJson<UPG_values>(rdata);
     }
-    public void UpgradeButtons()
-    {
-        Debug.Log(path);
-        Upgrade[0].onClick.AddListener(()=>upgradeinbut(0));
-        Upgrade[1].onClick.AddListener(()=>upgradeinbut(1));
-        Upgrade[2].onClick.AddListener(()=>upgradeinbut(2));
-        Upgrade[3].onClick.AddListener(()=>upgradeinbut(3));
-    }
-    void upgradeinbut(int i)
+
+    /*public void Upgrade3()
+        {
+            upgradeinbut(3);
+        }
+public void Upgrade
+        {
+            upgradeinbut(2);
+        }
+        public void Upgrade
+        {
+            upgradeinbut(1);
+        }
+        public void Upgrade0()
+        {
+           upgradeinbut(0);
+        }
+    */
+    public void upgradeinbut(int i)
     {
 
         Debug.Log(i);
