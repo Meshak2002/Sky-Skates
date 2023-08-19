@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.gamershunter.sdk": {
+      "version": "https://github.com/Gamers-Hunter/marketplace-unity.git#V1.0.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.1.0"
+      },
+      "hash": "477f83f51ed7654ba305697e871427dcd1c96150"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 1,
@@ -91,7 +100,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0",
+      "version": "3.1.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},

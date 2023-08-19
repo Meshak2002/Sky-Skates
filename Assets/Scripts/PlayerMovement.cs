@@ -15,18 +15,33 @@ public class PlayerMovement : MonoBehaviour
     public float forwardM;
     public bool Button,sidelock,gravitylock,jmplock;
     public Vector3 glob;
+    public bool keyboard;
     private void Start()
     {
-        CC=GetComponent<CharacterController>();
+        CC=GetComponent<CharacterController>();   
         animator=GetComponent<Animator>();
+       // GamersHunter.Session.Checkpoint();
+    }
+    public void OnEnable()
+    {
+        GamersHunter.Session.Start();
+        Debug.Log("started");
     }
     // Update is called once per frame
     private void Update()
     {
+        
         if (sidelock == false)
         {
-            //moveV.x = Input.GetAxis("Horizontal") * Movespeed;
-           moveV.x = Input.acceleration.x * Movespeed;
+            if (keyboard)
+            {
+                moveV.x = Input.GetAxis("Horizontal") * Movespeed;
+            }
+            else
+            {
+                moveV.x = Input.acceleration.x * Movespeed;
+            }
+     
         }
         moveV.z=forwardM;
         if(Button==true && CC.isGrounded){
@@ -64,5 +79,11 @@ public class PlayerMovement : MonoBehaviour
                 Button = true;
                 }
         }
+    }
+    public void OnDisable()
+    {
+       // GamersHunter.MarketButton.Update();
+       GamersHunter.Session.Stop();
+        Debug.Log("Stop");
     }
 }

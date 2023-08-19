@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class pausebutton : MonoBehaviour
 {
     // Start is called before the first frame update
-    public coins c;
-    public Score s;
-    public PlayerMovement pm;
+    private coins c;
+    private Score s;
+    private PlayerMovement pm;
     public GameObject pc; //pause canvas
     public Image hl;
     public static pausebutton pb;
@@ -22,6 +22,9 @@ public class pausebutton : MonoBehaviour
     }
     private void Update(){
             if (Input.GetKeyDown(KeyCode.Escape)) {
+                 pm = resource.instance.Player.GetComponent<PlayerMovement>();
+                 c = resource.instance.Player.GetComponent<coins>();
+                 s = resource.instance.Player.GetComponent<Score>();
                  pm.enabled=false;
                  pc.SetActive(true);
                  c.enabled=false;
@@ -31,6 +34,9 @@ public class pausebutton : MonoBehaviour
         }
     }
     public void onclick(){
+        pm = resource.instance.Player.GetComponent<PlayerMovement>();
+        c = resource.instance.Player.GetComponent<coins>();
+        s = resource.instance.Player.GetComponent<Score>();
         pm.enabled=false;
         pc.SetActive(true);
         c.enabled=false;
@@ -42,6 +48,9 @@ public class pausebutton : MonoBehaviour
     }
     public void repeatpause()
     {
+        pm = resource.instance.Player.GetComponent<PlayerMovement>();
+        c = resource.instance.Player.GetComponent<coins>();
+        s = resource.instance.Player.GetComponent<Score>();
         pm.enabled = false;
         pc.SetActive(true);
         c.enabled = false;

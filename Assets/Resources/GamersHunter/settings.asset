@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1890156605, guid: 2e4855dcf2002445db55571fb160b0d9, type: 3}
+  m_Name: settings
+  m_EditorClassIdentifier: 
+  appKey: b464f8fb3661140fbd013138420c7069
+  appSecret: 895208d69ded659b23668a838d5e40a963b5f1d1328b99b9c32acaa6f43571d6
+  createMarketOn: 1
+  destroyMarketOn: 1
+  macosWindowSizePortrait:
+    width: 400
+    height: 800
+  loggerOutputLevel: 1
+  initListener:
+    m_PersistentCalls:
+      m_Calls: []
+  giftListener:
+    m_PersistentCalls:
+      m_Calls: []
+  version: 1

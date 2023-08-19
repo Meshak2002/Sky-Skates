@@ -100,8 +100,15 @@ public class ShopBack : MonoBehaviour
     }
     public void tocl()
     {
-        string rdata= File.ReadAllText(path);
-        upv = JsonUtility.FromJson<UPG_values>(rdata);
+        if (File.Exists(path))
+        {
+            string rdata = File.ReadAllText(path);
+            upv = JsonUtility.FromJson<UPG_values>(rdata);
+        }
+        else
+        {
+            Debug.Log("File Not Exists");
+        }
     }
 
     /*public void Upgrade3()

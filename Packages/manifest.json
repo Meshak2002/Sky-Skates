@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.gamershunter.sdk": "https://github.com/Gamers-Hunter/marketplace-unity.git#V1.0.0",
     "com.unity.adaptiveperformance": "4.0.0",
     "com.unity.adaptiveperformance.samsung.android": "4.0.0",
     "com.unity.collab-proxy": "1.15.7",

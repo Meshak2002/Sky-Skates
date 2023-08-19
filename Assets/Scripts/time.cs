@@ -23,8 +23,16 @@ public class time : MonoBehaviour
     public void tocl()
     {
         string path = Application.persistentDataPath + "UpgradeData.json";
+        if (File.Exists(path))
+        {
+           
         string rdata = File.ReadAllText(path);
         upv = JsonUtility.FromJson<UPG_values>(rdata);
+        }
+        else
+        {
+            Debug.Log("File Not Exists");
+        }
     }
     void Start()
     {

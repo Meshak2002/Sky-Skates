@@ -6,14 +6,13 @@ using UnityEngine.SceneManagement;
 public class RRB_buttons : MonoBehaviour
 {
     // Start is called before the first frame update
-     public coins c;
-    public Score s;
-    public PlayerMovement pm;
+     private coins c;
+    private Score s;
+    private PlayerMovement pm;
      public disable_startcanvas ds;
      public GameObject scorecoin_canvas;
     public AudioSource loopsound;
     private void Start(){
-        pm = resource.instance.Player.GetComponent<PlayerMovement>();
         scorecoin_canvas.SetActive(false);
     }
     public void Replayf(){
@@ -28,6 +27,9 @@ public class RRB_buttons : MonoBehaviour
         
     }
     public void Resume(){
+        pm = resource.instance.Player.GetComponent<PlayerMovement>();
+        c = resource.instance.Player.GetComponent<coins>();
+        s = resource.instance.Player.GetComponent<Score>();
         AudioListener.volume=1;
         loopsound.Play();
         pm.enabled=true;
